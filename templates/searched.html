@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search for a Movie
+{% endblock %}
+
+{% block main %}
+    <table class="table tablestriped">
+        <thead>
+            <tr>
+                <th class="text-start hide"></th>
+                <th class="text-start">Title</th>
+                <th class="text-end">Release Date</th>
+                <th class="text-end">Rating</th>
+                <th class="text-end">Number of Votes</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for t in res %}
+            <tr>
+                <div>
+                    {% if t.poster_path is none %}
+                    <td><img src="/static/resized.png" style="width: 50px;"></td>
+                    {% else %}
+                    <td><img src="{{['https://image.tmdb.org/t/p/w300' , t.poster_path] | join('')}}" style="width: 50px;"></td>
+                    {% endif %}
+                    <td>{{t.title}}</td>
+                    <td>{{t.release_date}}</td>
+                    <td>{{t.vote_average}}</td>
+                    <td>{{t.vote_count}}</td>  
+                    <td>
+                        <form action="/fav?movie_id={{t.id}}" method="post" style="display:inline">
+                            <button class="btn btn-primary" type="submit">Add to Favorites</button>
+                        </form>
+                    </td> 
+                </div>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

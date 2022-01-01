@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search for a Movie
+{% endblock %}
+
+{% block main %}
+    <form action="/search" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="mname" placeholder="Movie Name" type="text">
+        </div>
+        <div>
+        <button class="btn btn-primary" type="submit" style="margin-top: 10px">Search!</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+
+<div class="row">
+{%for movie in movies %}
+<div class="col-4">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{['https://image.tmdb.org/t/p/w300' , movie.poster_path] | join('')}}" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title">{{movie.original_title}}</h5>
+        <p class="card-text">{{movie.overview}}</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table table-triped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>#</th>
+                <th>Action</th>
+                <th>Query</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for his in hist %}
+                <tr>
+                    <div>
+                        <td><img src="/static/resized.png" style="width: 50px;"></td>
+                        <td>{{his.id}}</td>
+                        <td>{{his.action}}</td>
+                        <td>{{his.query}}</td>
+                        <td>{{his.history}}</td>  
+                    </div>
+                </tr>
+             {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+

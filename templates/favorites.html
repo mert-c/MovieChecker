@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Favorites
+{% endblock %}
+
+{% block main %}
+    <table class="table tablestriped">
+        <thead>
+            <tr>
+                <th class="text-start hide">Favorites</th>
+                <th class="text-start">Title</th>
+                <th class="text-end">Rating</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for fav in favs %}
+            <tr>
+                <div>
+                    {% if fav.poster_path is none %}
+                    <td><img src="/static/resized.png" style="width: 50px;"></td>
+                    {% else %}
+                    <td><img src="{{['https://image.tmdb.org/t/p/w300' , fav.poster] | join('')}}" style="width: 50px;"></td>
+                    {% endif %}
+                    <td>{{fav.title}}</td>
+                    <td>{{fav.rating}}</td>
+                    <td>
+                        <form action="/remove?id={{fav.movie_id}}" method="post" style="display:inline">
+                            <button class="btn btn-danger" type="submit">Remove</button>
+                        </form>
+                    </td> 
+                </div>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
